@@ -7,7 +7,7 @@ const Interim = (props) => {
   console.log(API_BASE_URL);
   useEffect(() => {
     axios
-      .get(`/api/rlca-backend.herokuapp.com/identity`, {withCredentials: true})
+      .get(`${API_BASE_URL}/identity`, {withCredentials: true})
       .then(function (response) {
         localStorage.setItem("userID", response.data.id);
         localStorage.setItem("username", response.data.username);
