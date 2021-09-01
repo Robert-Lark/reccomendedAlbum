@@ -4,6 +4,7 @@ import {v4 as uuidv4} from "uuid";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
 import LoadingImage from "../../assets/loading.jpeg";
 import {getUserInfo} from "../../Redux/Actions/userActions";
+import { loadReleases } from "../../Redux/Actions/ReleasesAction";
 
 function Releases() {
   const [loadAmmount, setLoadAmmount] = useState(20);
@@ -12,6 +13,9 @@ function Releases() {
 
   useEffect(() => {
     dispatch(getUserInfo());
+    if (!data.releases.all) {
+      dispatch(loadReleases(localStorage.getItem("labelId"), null));
+    }
     // eslint-disable-next-line
   }, []);
 

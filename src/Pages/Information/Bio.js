@@ -1,6 +1,6 @@
 import {faMinus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addLabel} from "../../Redux/Actions/userActions";
 
@@ -9,6 +9,15 @@ function Bio() {
   const data = useSelector((state) => state);
   const userId = localStorage.getItem("userID");
   const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    
+    if (!data.nav.selected[0]) {
+      // dispatch(loadReleases(localStorage.getItem("labelId"), null));
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const removeLabelHandler = (id) => {
     console.log(id)
     dispatch(addLabel(id, false));

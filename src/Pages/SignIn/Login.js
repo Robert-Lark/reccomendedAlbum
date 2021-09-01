@@ -5,13 +5,12 @@ function Login(props) {
   function authorize() {
     if (process.env.NODE_ENV === "production") {
       alert(
-        "This feature is currently in development mode -come back in the next few days"
+        "As of 9/01 This feature is currently in development mode -come back in the next few days"
       );
     } else {
       window.location = `${API_BASE_URL}/authorize`;
     }
 
-    // window.location = "http://localhost:3001/authorize";
   }
 
   return (

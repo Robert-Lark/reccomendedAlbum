@@ -23,6 +23,8 @@ function SideNavLabels() {
     dispatch(showBio());
     dispatch(assetSelector([asset]));
     dispatch(loadReleases(id, type));
+    localStorage.setItem("labelId", id)
+    localStorage.setItem("asset", JSON.stringify(asset))
   };
 
   const searchHandler = () => {
