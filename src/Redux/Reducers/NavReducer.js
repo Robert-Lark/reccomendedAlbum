@@ -3,7 +3,7 @@ const initialState = {
   show: false,
   all: [],
   labels: [],
-  selected: [],
+  selected: false,
   loading: false,
   type: "",
 };
