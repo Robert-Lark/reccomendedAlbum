@@ -26,7 +26,6 @@ const Interim = (props) => {
       .catch(function (error) {
         console.log(error);
       });
-    // eslint-disable-next-line
   }, []);
 
   return <div>AUTHORIZING</div>;

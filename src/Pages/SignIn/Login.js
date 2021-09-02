@@ -3,14 +3,14 @@ import DiscogsLogo from "../../assets/discogsLogo.png";
 import {API_BASE_URL} from "../../API/APIcall";
 function Login(props) {
   function authorize() {
-    if (process.env.NODE_ENV === "production") {
-      alert(
-        "As of 9/01 This feature is currently in development mode -come back in the next few days"
-      );
-    } else {
-      window.location = `${API_BASE_URL}/authorize`;
-    }
-
+    // if (process.env.NODE_ENV === "production") {
+    //   alert(
+    //     "As of 9/01 This feature is currently in development mode -come back in the next few days"
+    //   );
+    // } else {
+    //   window.location = `${API_BASE_URL}/authorize`;
+    // }
+    window.location = `${API_BASE_URL}/authorize`;
   }
 
   return (
