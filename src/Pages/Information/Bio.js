@@ -48,8 +48,6 @@ function Bio() {
         {disabled ? <p>Removed</p> : <p>Remove Label</p>}
         <div
           className="navButtonsPlusLabels navButtons addRemove"
-          // onClick={() => topTenHandler(releaseInfo.img, false)}
-          // disabled={topTenDisabled}
         >
           <FontAwesomeIcon icon={faMinus} />
         </div>
