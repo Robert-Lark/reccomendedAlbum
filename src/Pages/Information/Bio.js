@@ -21,7 +21,7 @@ function Bio() {
     }
     // eslint-disable-next-line
   }, []);
-console.log(data.nav.selected !== [])
+
   const removeLabelHandler = (id) => {
     console.log(id);
     dispatch(addLabel(id, false));
@@ -57,7 +57,6 @@ console.log(data.nav.selected !== [])
     </div>
   ) : bio ? (
     <div className="bioContainer">
-      TEST
     {bio.map((asset, i) => (
       <div key={i} className="infoContainer">
         <img src={asset.images[0].uri} alt={asset.name} key={`${i} image`} />
