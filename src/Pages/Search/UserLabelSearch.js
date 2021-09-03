@@ -1,10 +1,12 @@
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import LoadingImage from "../../assets/loading.jpeg";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addLabel} from "../../Redux/Actions/userActions";
 import {API_BASE_URL} from "../../API/APIcall"
+
 function UserLabelSearch(props) {
   const dispatch = useDispatch();
   const [searchResults, setSearchResults] = useState([]);
@@ -62,7 +64,7 @@ function UserLabelSearch(props) {
             // }}
           >
             <img
-              src={asset.cover_image}
+              src={asset.cover_image ? asset.cover_image : LoadingImage}
               alt={asset.title}
               key={`nav item ${i} image`}
               className="labelSearchImg"
