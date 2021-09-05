@@ -33,7 +33,7 @@ function Header() {
   const loadData = () => {
     dispatch(navVisibility());
     if (userId) {
-      dispatch(navSelectorUserDispatch(data.user.all[0].labels));
+      dispatch(navSelectorUserDispatch(data.user.all[0]?.labels));
     } else {
       if (data.nav && data.nav.length > 0) {
         return;
