@@ -11,12 +11,12 @@ function Dropdown({sortBy, setSortBy}) {
   return (
     <div className="sortByButtonContainer">
       <div>
-        <button className="sortByButton" onClick={() => setShow(!show)}>
+        <button className="sortByButton" aria-expanded={show} aria-controls="dropdown" id="drpdwn1" onClick={() => setShow(!show)}>
           {" "}
           Sort by {sortBy} <i className="arrow down"></i>
         </button>
         {show && (
-          <div className="menu">
+          <div className="menu" id="dropdown" role="region" aria-labelledby="drpdwn1">
             <button
               className="sortByButton"
               onClick={() => clickHandler("Year 00-99")}

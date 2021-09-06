@@ -14,7 +14,7 @@ function HomeGuide(props) {
         labels.{" "}
       </p>
       <p>click label to browse pre-loaded labels. </p>
-      <p>click sign in to load your own and access the user dashboard. </p>
+      <p>sign in to load your own and access the user dashboard. </p>
     </div>
   );
 }

@@ -56,7 +56,7 @@ function SideNavLabels() {
               alt={asset.name}
               key={`nav item ${i} image`}
             />
-            <p key={`nav item ${i} name`}>{asset.name}</p>
+            {/* <p key={`nav item ${i} name`}>{asset.name}</p> */}
           </div>
         </Link>
       ))}
@@ -84,7 +84,7 @@ function SideNavLabels() {
               alt={asset.name}
               key={`nav item ${i} image`}
             />
-            <p key={`nav item ${i} name`}>{asset.name}</p>
+            {/* <p key={`nav item ${i} name`}>{asset.name}</p> */}
           </div>
         </Link>
       ))}

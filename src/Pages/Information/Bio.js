@@ -80,7 +80,6 @@ function Bio() {
   </div>
     ) : (
       <div className="loadingContainer">
-        TEST
       <img src={LoadingImage} alt="loading" />
     </div>
   );

@@ -25,7 +25,7 @@ const Search = ({topTen}) => {
       if (data.user?.all[0]?.labels < 1) {
         return;
       } else {
-        dispatch(loadReleasesSearch(data.user.all[0].labels));
+        dispatch(loadReleasesSearch(data.user.all[0]?.labels));
       }
       
     } else {
@@ -40,7 +40,7 @@ const Search = ({topTen}) => {
 
   return data.user?.all[0]?.labels < 1 ? (
     <div className="noLabelMessage">
-      <h1>You need to add a label before you can search for a release.</h1>
+      <p className="searchInstructions">You need to add a label before you can search for a release.</p>
     </div>
   ) : releaseInfo.length > 0 ? (
     <div className="searchContainer">

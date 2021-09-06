@@ -17,8 +17,8 @@
 // }
 
 .noLabelMessage {
-  width: 100%;
   height: 50vh;
+  padding: 20px;
   @include flexColumn;
   justify-content: center;
   text-align: center;
@@ -42,6 +42,7 @@
     text-align: center;
   }
 }
+
 
 input {
   // width: 80%;

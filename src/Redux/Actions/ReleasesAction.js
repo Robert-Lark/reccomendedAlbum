@@ -95,7 +95,7 @@ export const loadReleasesSearch = (userLabels) => async (dispatch) => {
   //first for loop pulls up  pagination info on each label
   const allData = [];
   
-  for (let i = 0; i < labelCodes.length; i++) {
+  for (let i = 0; i < labelCodes?.length; i++) {
     const pageNumber = await axios.get(labelReleases(labelCodes[i], 1));
     let pagination = pageNumber.data.pagination.pages;
     if (pagination > 10) {
