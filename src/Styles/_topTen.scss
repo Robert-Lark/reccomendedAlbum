@@ -29,6 +29,7 @@
   padding: 50px 0px;
   h4 {
     padding: 20px;
+    margin-left: 20px;
   }
   img {
     float: left;
@@ -70,6 +71,9 @@
     img {
       width: 145px;
       height: 145px;
+    }
+    h4 {
+      font-size: 2rem;
     }
   }
   @include breakpoint(desktop) {
