@@ -1,9 +1,10 @@
 import {faMinus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import {Helmet} from "react-helmet";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { label } from "../../API/APIcall";
+import {label} from "../../API/APIcall";
 import {addLabel} from "../../Redux/Actions/userActions";
 import LoadingImage from "../../assets/loading.jpeg";
 
@@ -15,8 +16,8 @@ function Bio() {
   const [bio, setBio] = useState([]);
   useEffect(() => {
     if (!data.nav.selected[0]) {
-      axios.get(label(localStorage.getItem("labelId"))).then(response => {
-        setBio([response.data])
+      axios.get(label(localStorage.getItem("labelId"))).then((response) => {
+        setBio([response.data]);
       });
     }
     // eslint-disable-next-line
@@ -30,6 +31,14 @@ function Bio() {
 
   return data.nav.selected ? (
     <div className="bioContainer">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{data.nav.selected[0].name}</title>
+        <link
+          rel="canonical"
+          href="https://sonic-architecture-v1.netlify.app/label"
+        />
+      </Helmet>
       {data.nav.selected.map((asset, i) => (
         <div key={i} className="infoContainer">
           <img src={asset.image} alt={asset.name} key={`${i} image`} />
@@ -46,40 +55,36 @@ function Bio() {
         disabled={disabled}
       >
         {disabled ? <p>Removed</p> : <p>Remove Label</p>}
-        <div
-          className="navButtonsPlusLabels navButtons addRemove"
-        >
+        <div className="navButtonsPlusLabels navButtons addRemove">
           <FontAwesomeIcon icon={faMinus} />
         </div>
       </div>
     </div>
   ) : bio ? (
     <div className="bioContainer">
-    {bio.map((asset, i) => (
-      <div key={i} className="infoContainer">
-        <img src={asset.images[0].uri} alt={asset.name} key={`${i} image`} />
-        <p key={`${i} name`}>{asset.name}</p>
-        <span>
-          <p key={`${i} profile`}>{asset.profile}</p>
-        </span>
-      </div>
-    ))}
-    <div
-      className="inLibrary"
-      style={userId ? {display: "auto"} : {display: "none"}}
-      onClick={() => removeLabelHandler(data.nav.selected[0].id)}
-      disabled={disabled}
-    >
-      {disabled ? <p>Removed</p> : <p>Remove Label</p>}
+      {bio.map((asset, i) => (
+        <div key={i} className="infoContainer">
+          <img src={asset.images[0].uri} alt={asset.name} key={`${i} image`} />
+          <p key={`${i} name`}>{asset.name}</p>
+          <span>
+            <p key={`${i} profile`}>{asset.profile}</p>
+          </span>
+        </div>
+      ))}
       <div
-        className="navButtonsPlusLabels navButtons addRemove"
+        className="inLibrary"
+        style={userId ? {display: "auto"} : {display: "none"}}
+        onClick={() => removeLabelHandler(data.nav.selected[0].id)}
+        disabled={disabled}
       >
-        <FontAwesomeIcon icon={faMinus} />
+        {disabled ? <p>Removed</p> : <p>Remove Label</p>}
+        <div className="navButtonsPlusLabels navButtons addRemove">
+          <FontAwesomeIcon icon={faMinus} />
+        </div>
       </div>
     </div>
-  </div>
-    ) : (
-      <div className="loadingContainer">
+  ) : (
+    <div className="loadingContainer">
       <img src={LoadingImage} alt="loading" />
     </div>
   );

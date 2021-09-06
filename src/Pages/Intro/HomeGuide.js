@@ -1,5 +1,8 @@
-import React from "react";
+
+
 import SonicArchLogo from "../../assets/SonicArchLogo.png";
+
+
 function HomeGuide(props) {
   const userId = localStorage.getItem("userID");
   return userId ? (

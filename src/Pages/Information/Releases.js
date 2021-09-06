@@ -80,7 +80,10 @@ function Releases() {
 
   return data.releases.all ? (
     <div className="bioContainer #top">
-      <Dropdown sortBy={sortBy} setSortBy={setSortBy} />
+      {data.releases.all.length > 1 && (
+        <Dropdown sortBy={sortBy} setSortBy={setSortBy} />
+      )}
+
       <div className="releasesContainer">
         {data.releases.all.slice(0, loadAmmount).map((asset) => (
           <div

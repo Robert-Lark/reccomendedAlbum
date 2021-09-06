@@ -1,4 +1,5 @@
 import DiscogsLogo from "../../assets/discogsLogo.png";
+import {Helmet} from "react-helmet";
 
 import {API_BASE_URL} from "../../API/APIcall";
 function Login(props) {
@@ -15,6 +16,14 @@ function Login(props) {
 
   return (
     <div className="loginContainerMain">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login</title>
+        <link
+          rel="canonical"
+          href="https://sonic-architecture-v1.netlify.app/login"
+        />
+      </Helmet>
       <img className="discogsLogo" src={DiscogsLogo} alt="discogsLogo" />
       <p>
         sonic architecture uses oauth authentication to access the discogs

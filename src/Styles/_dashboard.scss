@@ -35,7 +35,7 @@
 
 .ProfileSectionContainer {
   display: flex;
-  
+
   align-items: center;
   border: 1px solid gainsboro;
   width: 100%;
@@ -54,6 +54,8 @@
       cursor: pointer;
     }
     p {
+      padding: 5px;
+      font-size: 0.8rem;
       margin-left: 20px;
     }
   }
@@ -75,7 +77,7 @@
   }
   @include breakpoint(desktop) {
     // 1200px
-  
+
     p {
       font-size: 2rem;
       padding: 20px;

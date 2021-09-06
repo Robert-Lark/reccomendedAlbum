@@ -3,10 +3,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
 import LoadingImage from "../../assets/loading.jpeg";
 import axios from "axios";
+import {Helmet} from "react-helmet";
 import {topTenAction} from "../../Redux/Actions/userActions";
 import {navVisibility} from "../../Redux/Actions/navSelectorAction";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 import {API_BASE_URL} from "../../API/APIcall";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 const Search = ({topTen}) => {
   const user = localStorage.getItem("userID");
@@ -27,7 +31,6 @@ const Search = ({topTen}) => {
       } else {
         dispatch(loadReleasesSearch(data.user.all[0]?.labels));
       }
-      
     } else {
       dispatch(loadReleasesSearch());
     }
@@ -40,17 +43,35 @@ const Search = ({topTen}) => {
 
   return data.user?.all[0]?.labels < 1 ? (
     <div className="noLabelMessage">
-      <p className="searchInstructions">You need to add a label before you can search for a release.</p>
+      <p className="searchInstructions">
+        You need to add a label before you can search for a release.
+      </p>
+      <Link to="/searchLabels" className="noLabelAdd">
+        <div className="noLabelAdd">
+          <FontAwesomeIcon icon={faPlus} />
+        </div>
+      </Link>
     </div>
   ) : releaseInfo.length > 0 ? (
     <div className="searchContainer">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Search Releases</title>
+        <link
+          rel="canonical"
+          href="https://sonic-architecture-v1.netlify.app/search"
+        />
+      </Helmet>
       <input
         type="text"
         key="searchBar"
         placeholder={"search"}
         onChange={(e) => inputHandler(e.target.value)}
       />
-      <p className="searchInstructions">Here you can search for a particular release from the labels {user ? ("you follow.") : ("in the library.")}</p>
+      <p className="searchInstructions">
+        Here you can search for a particular release from the labels{" "}
+        {user ? "you follow." : "in the library."}
+      </p>
       <div className="searchResults">
         {searchInput &&
           releaseInfo.map((release, i) => {

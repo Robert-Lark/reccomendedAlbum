@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import {useEffect} from "react";
 import {API_BASE_URL, client_url} from "../../API/APIcall";
+import LoadingImage from "../../assets/loading.jpeg";
 
 const Interim = (props) => {
   console.log(API_BASE_URL);
@@ -28,7 +29,14 @@ const Interim = (props) => {
       });
   }, []);
 
-  return <div>AUTHORIZING</div>;
+  return (
+    <div className="auth">
+      <p>AUTHORIZING</p>
+      <div className="loadingContainer">
+      <img src={LoadingImage} alt="loading" />
+    </div>
+    </div>
+  );
 };
 
 export default Interim;
