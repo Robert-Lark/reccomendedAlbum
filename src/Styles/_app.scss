@@ -1,5 +1,20 @@
 @import "./mixins.scss";
 
+// @include breakpoint(mobileSmall) {
+//     // 330px
+// }
+// @include breakpoint(mobileLarge) {
+//     // 475px
+// }
+// @include breakpoint(tablet) {
+//     // 700px
+// }
+// @include breakpoint(laptop) {
+//     // 900px
+// }
+// @include breakpoint(desktop) {
+//     // 1200px
+// }
 
 .appContainer {
   display: flex;

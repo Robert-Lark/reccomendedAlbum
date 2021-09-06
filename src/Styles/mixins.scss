@@ -4,6 +4,48 @@
     align-items: center;
 }
 
+@mixin infoGuides {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 35px;
+    height: 80vh;
+    img {
+      width: 100%;
+      margin-bottom: -20px;
+      @include breakpoint(mobileLarge) {
+        // 475px
+        margin-bottom: -100px;
+      }
+      @include breakpoint(tablet) {
+        // 700px
+        width: 80%;
+      }
+      @include breakpoint(laptop) {
+        // 900px
+        width: 60%;
+      }
+      @include breakpoint(desktop) {
+        // 1200px
+        width: 70%;
+      }
+    }
+    p {
+      font-family: "Hina Mincho", serif;
+      padding: 0px 20px;
+      text-align: center;
+      @include breakpoint(desktop) {
+        // 1200px
+       font-size: 20px;
+      }
+    }
+  }
+
+
+
+
 @mixin breakpoint($point) {
     @if $point == desktop {
       @media (min-width: 1200px) {

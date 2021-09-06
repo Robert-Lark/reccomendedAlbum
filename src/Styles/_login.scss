@@ -1,0 +1,40 @@
+@import "./mixins.scss";
+
+// @include breakpoint(mobileSmall) {
+//     // 330px
+// }
+// @include breakpoint(mobileLarge) {
+//     // 475px
+// }
+// @include breakpoint(tablet) {
+//     // 700px
+// }
+// @include breakpoint(laptop) {
+//     // 900px
+// }
+// @include breakpoint(desktop) {
+//     // 1200px
+// }
+
+.loginContainerMain {
+  @include flexColumn;
+  width: 100%;
+  margin-top: 35px;
+  height: 80vh;
+  .discogsLogo {
+    width: 50%;
+  }
+  p {
+    margin-top: 40px;
+    font-family: "Hina Mincho", serif;
+    padding: 0px 20px;
+    text-align: center;
+  }
+  button {
+    margin-top: 40px;
+    border-radius: 20px;
+    font-family: "Hina Mincho", serif;
+    padding: 0px 20px;
+    text-align: center;
+  }
+}

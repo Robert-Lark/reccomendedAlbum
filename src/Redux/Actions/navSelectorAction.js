@@ -1,4 +1,4 @@
-//This is the nav selector - All actions in here relate to the nav and its functions 
+//This is the nav selector - All actions in here relate to the nav and its functions
 //ie: depending on what button the user clicked
 // in the header the navSelectorDispatch will populate a navigation menu that slides out from the left.
 // That menu will be populated by either the users saved content (if they have an account) or
@@ -10,6 +10,43 @@ import {artist} from "../../API/APIcall";
 import genreImg from "../../assets/genre.png";
 // the function that calls the API
 import {DataDiviner} from "../../utils/utils";
+
+export const navSelectorUserDispatch = (userLabelCodes) => async (dispatch) => {
+  dispatch({
+    type: "NAV_SELECTOR_USER",
+    payload: {
+      loading: true,
+    },
+  });
+  // dispatch({
+  //   type: "SHOW",
+  //   payload: {
+  //     show: false,
+  //   },
+  // });
+
+  const labelData = [];
+
+  for (let i = 0; i < userLabelCodes.length; i++) {
+    let data = await DataDiviner(label(userLabelCodes[i]));
+    labelData.push({
+      name: data[0].name,
+      image: data[0].images[0].uri,
+      profile: data[0].profile,
+      url: data[0].urls[0],
+      id: data[0].id,
+      type: "label",
+    });
+  }
+
+  dispatch({
+    type: "NAV_SELECTOR_SUCCESS_USER",
+    payload: {
+      all: labelData,
+      loading: false,
+    },
+  });
+};
 
 export const navSelectorDispatch = (nav) => async (dispatch) => {
   dispatch({
@@ -26,10 +63,9 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
   });
 
   const allData = [];
-
   if (nav === "label") {
     //todo replace these codes with some from the users db
-    const dummyLabelCodes = [90336, 157803, 23127, 389319, 153824, 88949];
+    const dummyLabelCodes = [1149832, 157803, 23127, 389319, 153824, 88949];
     for (let i = 0; i < dummyLabelCodes.length; i++) {
       let data = await DataDiviner(label(dummyLabelCodes[i]));
       allData.push({
@@ -79,32 +115,32 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
       });
     }
   }
+
   dispatch({
     type: "NAV_SELECTOR_SUCCESS",
     payload: {
       all: allData,
       loading: false,
-      type: nav
+      type: nav,
     },
   });
 };
 
 export const navVisibility = () => (dispatch) => {
   dispatch({
-    type: "NAV_VISIBLE"
+    type: "NAV_VISIBLE",
+    // payload: {
+    //   show: visibility,
+    // },
   });
-}
+};
 
-export const signButton = (data) => (dispatch) => {
-  //this controls which button is visible on the header 
-  // sign in if the user is not yet signed in 
-  // avatar if the user is signed in. 
+export const userID = (data) => (dispatch) => {
+  //this sends the userId to the reducer
   dispatch({
-    type: "SIGN_TOGGLE",
+    type: "ID",
     payload: {
-      signToggle: data
-      
-    }
+      id: data,
+    },
   });
-}
-
+};

@@ -1,0 +1,64 @@
+@import "./mixins.scss";
+
+// @include breakpoint(mobileSmall) {
+//     // 330px
+// }
+// @include breakpoint(mobileLarge) {
+//     // 475px
+// }
+// @include breakpoint(tablet) {
+//     // 700px
+// }
+// @include breakpoint(laptop) {
+//     // 900px
+// }
+// @include breakpoint(desktop) {
+//     // 1200px
+// }
+
+.loadingContainer {
+  position: absolute;
+  
+  left: 50px;
+  right: 50px;
+  bottom: 150px;
+  @include flexColumn;
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+  img {
+    border-radius: 110px;
+    width: 70%;
+    animation: rotation 2s infinite linear;
+  }
+@include breakpoint(mobileSmall) {
+    // 330px
+}
+@include breakpoint(mobileLarge) {
+    // 475px
+}
+@include breakpoint(tablet) {
+  img {
+    width: 50%;
+  }
+    // 700px
+}
+@include breakpoint(laptop) {
+  img {
+    width: 30%;
+  }
+    // 900px
+}
+@include breakpoint(desktop) {
+  img {
+    width: 20%;
+  }
+    // 1200px
+}
+
+}

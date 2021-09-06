@@ -12,12 +12,17 @@ export const loadReleases = (id, type) => async (dispatch) => {
     },
   });
 
-  const pageNumber = await axios.get(labelReleases(id, 1));
-
+  let pageNumber = await axios.get(labelReleases(id, 1));
+  let pagination = pageNumber.data.pagination.pages;
+  if (pagination > 10) {
+    pagination = 10;
+  }
+  console.log(pageNumber.data.pagination.pages)
+  console.log(pagination)
   let allData = [];
-  for (let i = 1; i <= pageNumber.data.pagination.pages; i++) {
+  for (let i = 1; i <= pagination; i++) {
     let data = await axios.get(labelReleases(id, i));
-    console.log(data);
+
     allData.push(data.data.releases);
   }
   let releasesData = [].concat.apply([], allData);
@@ -74,7 +79,9 @@ export const loadReleases = (id, type) => async (dispatch) => {
   });
 };
 
-export const loadReleasesSearch = () => async (dispatch) => {
+export const loadReleasesSearch = (userLabels) => async (dispatch) => {
+  const userId = localStorage.getItem("userID");
+  console.log(`hit in action with labels ${userLabels}`)
   dispatch({
     type: "FETCH_RELEASES",
     payload: {
@@ -82,21 +89,26 @@ export const loadReleasesSearch = () => async (dispatch) => {
     },
   });
 
-  const dummyLabelCodes = [90336, 157803, 23127, 389319, 153824, 88949];
-  //first for loop pulls up info on each label
+  const labelCodes = userId
+    ? userLabels
+    : [1149832, 157803, 23127, 389319, 153824];
+  //first for loop pulls up  pagination info on each label
   const allData = [];
-  for (let i = 0; i < dummyLabelCodes.length; i++) {
-    const pageNumber = await axios.get(labelReleases(dummyLabelCodes[i], 1));
-    console.log(pageNumber);
+  
+  for (let i = 0; i < labelCodes.length; i++) {
+    const pageNumber = await axios.get(labelReleases(labelCodes[i], 1));
+    let pagination = pageNumber.data.pagination.pages;
+    if (pagination > 10) {
+      pagination = 10;
+    }
     let allReleaseData = [];
     //second for loop gets the releases for each label
-    for (let j = 1; j <= pageNumber.data.pagination.pages; j++) {
-      let data = await axios.get(labelReleases(dummyLabelCodes[i], j));
+    for (let j = 1; j <= pagination; j++) {
+      let data = await axios.get(labelReleases(labelCodes[i], j));
       allReleaseData.push(data.data.releases);
     }
     let releasesData = [].concat.apply([], allReleaseData);
-
-
+    
     const releasesByTitle = {};
     const releases = [];
 
@@ -124,9 +136,9 @@ export const loadReleasesSearch = () => async (dispatch) => {
     for (let title in releasesByTitle) {
       releases.push(releasesByTitle[title]);
     }
-        //here we flatten the arrays, this allows search functionality
-    // if the user wants to search all labels then they cannot be in seperate 
-    // arrays (organized by label), they have to be in one big array. 
+    //here we flatten the arrays, this allows search functionality
+    // if the user wants to search all labels then they cannot be in seperate
+    // arrays (organized by label), they have to be in one big array.
 
     allData.push(releases);
   }

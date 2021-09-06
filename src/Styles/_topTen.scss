@@ -1,5 +1,21 @@
 @import "./mixins.scss";
 
+// @include breakpoint(mobileSmall) {
+//     // 330px
+// }
+// @include breakpoint(mobileLarge) {
+//     // 475px
+// }
+// @include breakpoint(tablet) {
+//     // 700px
+// }
+// @include breakpoint(laptop) {
+//     // 900px
+// }
+// @include breakpoint(desktop) {
+//     // 1200px
+// }
+
 .topTenContainer {
   // position: sticky;
   border: 1px solid gainsboro;
@@ -24,6 +40,14 @@
     max-height: 500px;
     display: flex;
     flex-wrap: wrap;
+    gap: 2px;
+  }
+  .navButtonsPlus {
+    border: 2px solid green;
+    width: 30px;
+    height: 30px;
+    @include flexColumn;
+    justify-content: center;
     gap: 2px;
   }
   p {

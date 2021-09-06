@@ -16,6 +16,7 @@ const releasesReducer = (state = initState, action) => {
       return {
         ...state,
         all: action.payload.all.sort((a, b) => b.year - a.year),
+        search: action.payload.all,
         label: action.payload.label,
         loading: false,
       };
@@ -26,6 +27,10 @@ const releasesReducer = (state = initState, action) => {
         ...state,
         search: action.payload.all,
         loading: false,
+      };
+    case "ADD_LABEL_SUCCESS":
+      return {
+        ...state,
       };
     default:
       return {...state};

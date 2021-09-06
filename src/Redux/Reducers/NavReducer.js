@@ -1,8 +1,9 @@
 const initialState = {
-  signToggle: false,
+  id: "",
   show: false,
   all: [],
-  selected: [],
+  labels: [],
+  selected: false,
   loading: false,
   type: "",
 };
@@ -19,9 +20,11 @@ const navReducer = (state = initialState, action) => {
         type: action.payload.type,
       };
     case "NAV_VISIBLE":
-      return {...state, show: false};
-    case "SIGN_TOGGLE":
-      return {...state, signToggle: action.payload.signToggle};
+      return {...state, show: !state.show};
+    case "ADD_LABEL_SUCCESS":
+      return {...state, labels: action.payload.labels};
+    case "ID":
+      return {...state, id: action.payload.id};
     case "ASSET_SELECTOR_SUCCESS":
       //todo figure out why ...state changes formatting
       return {
@@ -29,8 +32,11 @@ const navReducer = (state = initialState, action) => {
         show: false,
         loading: true,
         selected: action.payload.all,
-        signToggle: state.signToggle,
+        id: state.id,
+        all: state.all,
       };
+    case "NAV_SELECTOR_SUCCESS_USER":
+      return {...state, labels: action.payload.all};
     default:
       return {...state};
   }

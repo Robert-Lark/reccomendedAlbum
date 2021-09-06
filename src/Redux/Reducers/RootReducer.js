@@ -4,11 +4,12 @@ import releasesReducer from "./ReleasesReducer";
 import {combineReducers} from "redux";
 import releaseReducer from "./ReleaseReducer";
 import userReducer from "./UserReducer";
+import labelsReducer from "./LabelsReducer";
 
 const allReducers = combineReducers({
   nav: navReducer,
   user: userReducer,
-  // asset: assetReducer,
+  labels: labelsReducer,
   releases: releasesReducer,
   individualRelease: releaseReducer,
 });

@@ -1,36 +1,111 @@
 @import "./mixins.scss";
 
+// @include breakpoint(mobileSmall) {
+//     // 330px
+// }
+// @include breakpoint(mobileLarge) {
+//     // 475px
+// }
+// @include breakpoint(tablet) {
+//     // 700px
+// }
+// @include breakpoint(laptop) {
+//     // 900px
+// }
+// @include breakpoint(desktop) {
+//     // 1200px
+// }
+
 .releaseInfoContainer {
-  
+  margin-top: 20px;
   @include flexColumn;
   padding: 20px;
   img {
     padding: 20px;
   }
   h2 {
+    text-align: center;
     padding: 10px;
+  }
+
+  @include breakpoint(tablet) {
+    img {
+      width: 40%;
+    }
+  }
+
+  @include breakpoint(laptop) {
+  }
+
+  @include breakpoint(desktop) {
+    // macbook
   }
 }
 
 .tracklistSpan {
-  width: 200px;
+  width: 300px;
+  // white-space: nowrap;
+  // text-align: center;
+
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-padding: 20px;
+  padding: 20px;
   .position {
-      width: 50%;
-    text-align: left;
+    width: 10%;
+    // text-align: right;
   }
   .title {
-    width: 50%;
-    text-align: left;
+    width: 40%;
+    text-align: right;
+  }
+
+  @include breakpoint(tablet) {
+    width: 400px;
   }
 }
+.topButtonsCont {
+  display: flex;
+  gap: 20px;
+}
+.inLibrary {
+  width: 150px;
+  @include flexColumn;
+  background-color: aliceblue;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+.buttonContainerAddRemove {
+  display: flex;
+}
+.addRemove {
+  @include flexColumn;
+  padding: 0px 20px 20px 20px;
+}
 .videoPlayer {
+  @include flexColumn;
+  gap: 20px;
+  margin-bottom: 0.5rem;
+  padding: 20px;
+  width: 300px;
+}
 
-    @include flexColumn;
-gap: 20px;
-    padding: 20px;
-    width: 300px;
+.releaseInfoButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 100%;
+  button {
+    background-color: lightslategray; /* Green */
+    border-radius: 20px;
+
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
 }

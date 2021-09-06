@@ -1,34 +1,42 @@
-// import Begin from "./components/Begin";
-import Navigator from "./components/Navigation/";
-import Info from "./components/Information";
-import Dashboard from "./components/Dashboard";
+import Navigator from "./Pages/Navigation/";
+import Info from "./Pages/Information";
+import Dashboard from "./Pages/Dashboard";
+import Guide from "./Pages/Intro";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Signup from "./components/SignIn/Signup";
-import {AuthProvider} from "./Auth/AuthProvider";
-import Login from "./components/SignIn/Login";
+
+import Login from "./Pages/SignIn/Login";
 import PrivateRoute from "./Auth/PrivateRoute";
-import ForgotPassword from "./components/SignIn/ForgotPassword";
-import SearchPage from "./components/Information/SearchPage";
+
+import Search from "./Pages/Search/";
+import Interim from "./Pages/SignIn/Interim";
+import SideNavAdmin from "./Pages/Navigation/SideNavAdmin";
+import UserLabelSearch from "./Pages/Search/UserLabelSearch";
+
 
 
 function App() {
+  
+
   return (
-    <Router>
-      <AuthProvider>
-        <div>
-          <Navigator />
-          <div className="appContainer">
-            <Switch>
-              <Route path={["/:type/:info"]} component={Info} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <Route path="/search" component={SearchPage} />
-              <Route path="/forgot-password" component={ForgotPassword} />
-              <PrivateRoute path="/dashboard" component={Dashboard} />
-            </Switch>
-          </div>
+    <Router onUpdate={() => window.scrollTo(0, 0)}>
+      <div>
+        <Navigator />
+        <div className="appContainer">
+          <Switch>
+            <Route exact path={"/"} component={Guide} />
+            <Route path={["/:type/:info"]} component={Info} />
+            <Route path="/login" component={Login} />
+            <Route path="/authorizing" component={Interim} />
+            <Route path="/search" component={Search} />
+
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/labels" component={SideNavAdmin} />
+            <PrivateRoute path="/searchLabels" component={UserLabelSearch} />
+
+            {/* <Route path="/dashboard" component={Dashboard} /> */}
+          </Switch>
         </div>
-      </AuthProvider>
+      </div>
     </Router>
   );
 }
