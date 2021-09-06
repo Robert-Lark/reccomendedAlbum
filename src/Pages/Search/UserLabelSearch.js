@@ -1,16 +1,16 @@
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import LoadingImage from "../../assets/loading.jpeg";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addLabel} from "../../Redux/Actions/userActions";
-import {API_BASE_URL} from "../../API/APIcall"
+import {API_BASE_URL} from "../../API/APIcall";
 
 function UserLabelSearch(props) {
   const dispatch = useDispatch();
   const [searchResults, setSearchResults] = useState([]);
-
+  const [clicked, setClicked] = useState(false);
   const [inputValue, setInputValue] = useState();
   const inputHandler = (e) => {
     axios
@@ -42,6 +42,11 @@ function UserLabelSearch(props) {
       });
   };
 
+  const clickHandler = (id, add) => {
+    setClicked(true);
+    dispatch(addLabel(id, add))
+  };
+
   return (
     <div className="searchContainer">
       <input
@@ -54,14 +59,17 @@ function UserLabelSearch(props) {
         Search
       </button>
       <br></br>
+      <div>
+        <p className="searchInstructions">
+          Here you can search for a particular label you would like to add to
+          your library.
+        </p>
+      </div>
       <div className="userSearchResults">
         {searchResults?.map((asset, i) => (
           <div
             key={i}
             className="navButtonsUserLabelSearch"
-            // onClick={() => {
-            //   dispatchHandler(asset.id, asset, asset.type);
-            // }}
           >
             <img
               src={asset.cover_image ? asset.cover_image : LoadingImage}
@@ -71,12 +79,18 @@ function UserLabelSearch(props) {
             />
             <div className="labelSearchBottom">
               <p key={`nav item ${i} name`}>{asset.title}</p>
-              <div
-                className="navButtonsPlusLabels navButtons"
-                onClick={() => dispatch(addLabel(asset.id, true))}
-              >
-                <FontAwesomeIcon icon={faPlus} />
-              </div>
+              {clicked ? (
+                <div className="navButtonsPlusLabels navButtons">
+                  <FontAwesomeIcon icon={faMinus} />
+                </div>
+              ) : (
+                <div
+                  className="navButtonsPlusLabels navButtons"
+                  onClick={() => clickHandler(asset.id, true)}
+                >
+                  <FontAwesomeIcon icon={faPlus} />
+                </div>
+              )}
             </div>
           </div>
         ))}
