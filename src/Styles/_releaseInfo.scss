@@ -43,27 +43,30 @@
 }
 
 .tracklistSpan {
-  text-align: center;
+  width: 300px;
+  // white-space: nowrap;
+  // text-align: center;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 20px;
   .position {
-    width: 50%;
+    width: 10%;
     // text-align: right;
   }
   .title {
-    width: 50%;
-    text-align: left;
+    width: 40%;
+    text-align: right;
   }
+
   @include breakpoint(tablet) {
     width: 400px;
   }
 }
 .topButtonsCont {
- display: flex;
- gap: 20px; 
+  display: flex;
+  gap: 20px;
 }
 .inLibrary {
   width: 150px;

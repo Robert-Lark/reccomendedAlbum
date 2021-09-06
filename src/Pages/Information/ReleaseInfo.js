@@ -19,6 +19,9 @@ function ReleaseInfo() {
   const releaseInfo = useSelector((state) => state.individualRelease);
   const data = useSelector((state) => state);
   const userId = localStorage.getItem("userID");
+
+
+
   //This function converts the returned youtube 'watch' uris into youtube 'embed' uris
   // which is neccessary to host them.
   function youtube_parser(url) {
@@ -151,6 +154,10 @@ function ReleaseInfo() {
         {releaseInfo.tracklist.map((track, i) => (
           <span key={i} className="tracklistSpan">
             <p className="position">{track.position}</p>
+            {track.artists?.map((artist, i) => (
+              <p key={i}>{artist.name}</p>
+            ))}
+            
             <p className="title">{track.title}</p>
           </span>
         ))}
