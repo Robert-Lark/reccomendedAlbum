@@ -50,7 +50,7 @@ const Search = ({topTen}) => {
         placeholder={"search"}
         onChange={(e) => inputHandler(e.target.value)}
       />
-      <p className="searchInstructions">Here you can search for a particular release from the labels you follow</p>
+      <p className="searchInstructions">Here you can search for a particular release from the labels {user ? ("you follow.") : ("in the library.")}</p>
       <div className="searchResults">
         {searchInput &&
           releaseInfo.map((release, i) => {
