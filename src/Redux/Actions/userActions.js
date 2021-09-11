@@ -97,7 +97,7 @@ export const addLabel = (id, add) => async (dispatch) => {
 };
 
 export const searchLabels = (data) => async (dispatch) => {
-  console.log(`hit in WRONG action with labels ${data}`);
+
   const allReleaseData = [];
   const latestReleaseData = [];
   for (let i = 0; i < data.length; i++) {
@@ -110,7 +110,7 @@ export const searchLabels = (data) => async (dispatch) => {
         },
       }
     );
-    
+    console.log(response)
     allReleaseData.push(response.data.releases);
     latestReleaseData.push(response.data.releases)
   }

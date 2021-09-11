@@ -63,6 +63,7 @@ function UserLabelSearch(props) {
         />
       </Helmet>
       <input
+      autoFocus
         type="text"
         key="searchBar"
         placeholder={"search"}

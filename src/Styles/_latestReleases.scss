@@ -3,15 +3,26 @@
   border-radius: 10px;
   width: 100%;
   max-height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
+@include flexColumn;
   padding: 50px 0px;
   h4 {
     padding: 0px 20px;
   }
   p {
-    padding:  0px 20px;
+    padding: 0px 20px;
+  }
+}
+.labelLatestContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 0px;
+  img {
+    width: 30px;
+    height: 30px;
+    max-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
   }
 }

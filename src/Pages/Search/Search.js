@@ -63,13 +63,14 @@ const Search = ({topTen}) => {
         />
       </Helmet>
       <input
+      autoFocus
         type="text"
         key="searchBar"
         placeholder={"search"}
         onChange={(e) => inputHandler(e.target.value)}
       />
       <p className="searchInstructions">
-        Here you can search for a particular release from the labels{" "}
+        Here you can search for a particular release from the labels, just start typing.{" "}
         {user ? "you follow." : "in the library."}
       </p>
       <div className="searchResults">
