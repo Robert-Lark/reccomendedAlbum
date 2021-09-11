@@ -80,6 +80,11 @@ function UserLabelSearch(props) {
             your library.
           </p>
         )}
+        {clicked && (
+          <p className="searchInstructions">
+          Nice, now you can find that label in your labels.
+        </p>
+        )}
         {error && (
           <p className="searchInstructions">
             I am sorry it looks like your search query caused an error. Please
