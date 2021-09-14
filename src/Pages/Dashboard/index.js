@@ -3,7 +3,7 @@ import {getUserInfo} from "../../Redux/Actions/userActions";
 import ProfileSection from "./ProfileSection";
 import {Helmet} from "react-helmet";
 
-import LatestReleases from "./LatestReleases";
+// import LatestReleases from "./LatestReleases";
 import TopTen from "./TopTen";
 
 function Index(props) {
@@ -27,7 +27,7 @@ function Index(props) {
       <ProfileSection />
       <TopTen />
 
-      <LatestReleases/>
+      {/* <LatestReleases/> */}
     </div>
   );
 }

@@ -70,8 +70,8 @@ const Search = ({topTen}) => {
         onChange={(e) => inputHandler(e.target.value)}
       />
       <p className="searchInstructions">
-        Here you can search for a particular release from the labels, just start typing.{" "}
-        {user ? "you follow." : "in the library."}
+        Here you can search for a particular release from the labels, {user ? "you follow." : "in the library."} just start typing.{" "}
+        
       </p>
       <div className="searchResults">
         {searchInput &&

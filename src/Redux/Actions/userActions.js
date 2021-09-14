@@ -100,7 +100,7 @@ export const searchLabels = (data) => async (dispatch) => {
 
   const allReleaseData = [];
   const latestReleaseData = [];
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < data?.length; i++) {
     const response = await axios.get(
       `${API_BASE_URL}/usersLabelsSearch`,
       {
